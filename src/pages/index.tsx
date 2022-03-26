@@ -1,3 +1,12 @@
+import Head from 'next/head';
+
 export default function Home() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <Head>
+        <title>Home | Github Profile</title>
+      </Head>
+      <h1>Hello World</h1>
+    </>
+  );
 }
