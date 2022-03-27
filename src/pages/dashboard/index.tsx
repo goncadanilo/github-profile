@@ -1,5 +1,5 @@
-import { signOut } from 'next-auth/react';
 import Head from 'next/head';
+import { Header } from 'src/components/Header';
 import { withSession } from 'src/helpers/withSession';
 import { UserSession } from 'src/types/userSession';
 
@@ -13,10 +13,8 @@ export default function Dashboard({ session }: DashboardProps) {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <h1>Hello, {session.user.name}</h1>
-      <button type="button" onClick={() => signOut()}>
-        Logout
-      </button>
+
+      <Header user={session.user} />
     </>
   );
 }
