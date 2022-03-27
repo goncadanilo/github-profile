@@ -1,12 +1,58 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { getSession, signIn, useSession } from 'next-auth/react';
+import { FaGithub } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
-export default function Home() {
+import styles from 'src/styles/login.module.scss';
+import { NextPageContext } from 'next';
+
+export default function Login() {
+  const router = useRouter();
+
+  async function handleSignInWithGithub() {
+    try {
+      await signIn('github');
+    } catch (error) {
+      toast.error('Oops! Ocorreu um erro ao tentar fazer login.');
+    }
+  }
+
   return (
     <>
       <Head>
-        <title>Home | Github Profile</title>
+        <title>Login | Github Profile</title>
       </Head>
-      <h1>Hello World</h1>
+
+      <main className={styles.container}>
+        <section className={styles.hero}>
+          <h1>Github Profile</h1>
+          <p>Faça login com seu github para acessar a plataforma.</p>
+          <button type="button" onClick={handleSignInWithGithub}>
+            <FaGithub />
+            Entrar
+          </button>
+        </section>
+
+        <img src="/images/avatar.svg" alt="Boy coding" />
+      </main>
     </>
   );
+}
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
