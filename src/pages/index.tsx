@@ -1,15 +1,12 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { getSession, signIn, useSession } from 'next-auth/react';
+import { NextPageContext } from 'next';
+import { getSession, signIn } from 'next-auth/react';
 import { FaGithub } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 import styles from 'src/styles/login.module.scss';
-import { NextPageContext } from 'next';
 
 export default function Login() {
-  const router = useRouter();
-
   async function handleSignInWithGithub() {
     try {
       await signIn('github');
