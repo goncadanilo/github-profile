@@ -14,8 +14,6 @@ export const withSession = async (context: NextPageContext) => {
   }
 
   return {
-    props: {
-      user: session.user,
-    },
+    props: { session },
   };
 };
