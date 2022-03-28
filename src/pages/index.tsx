@@ -1,25 +1,27 @@
-import Head from 'next/head';
 import { parseCookies } from 'nookies';
 import { FaGithub } from 'react-icons/fa';
 
+import { Head } from 'src/components/Head';
+
 import styles from 'src/styles/login.module.scss';
 
-const CLIENT_ID = process.env.GITHUB_APP_CLIENT_ID;
-const SCOPE = 'read:user';
-const AUTH_URL = `https://github.com/login/oauth/authorize?scope=${SCOPE}&client_id=${CLIENT_ID}`;
+interface LoginProps {
+  clientId: string;
+}
 
-export default function Login() {
+export default function Login({ clientId }: LoginProps) {
   return (
     <>
-      <Head>
-        <title>Login | Github Profile</title>
-      </Head>
+      <Head title="Login | Github Profile" />
 
       <main className={styles.container}>
         <section className={styles.hero}>
           <h1>Github Profile</h1>
           <p>Faça login com seu github para acessar a plataforma.</p>
-          <a title="Entrar com Github" href={AUTH_URL}>
+          <a
+            title="Entrar com Github"
+            href={`https://github.com/login/oauth/authorize?scope=read:user&client_id=${clientId}`}
+          >
             <FaGithub />
             Entrar
           </a>
@@ -44,6 +46,6 @@ export async function getServerSideProps(ctx: any) {
   }
 
   return {
-    props: {},
+    props: { clientId: process.env.GITHUB_APP_CLIENT_ID },
   };
 }

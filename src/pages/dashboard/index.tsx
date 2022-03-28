@@ -1,121 +1,119 @@
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { parseCookies } from 'nookies';
 import { FaTwitter } from 'react-icons/fa';
 import { FiUsers, FiLink, FiMapPin, FiMail } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
 import { BiBuildings } from 'react-icons/bi';
 
+import { Head } from 'src/components/Head';
 import { Header } from 'src/components/Header';
-import { api } from 'src/service/github';
-import { User } from 'src/types/user';
+import { fetchLoggedUser, fetchUserByUsername } from 'src/service/github';
+import { User } from 'src/types/github';
 
 import styles from 'src/styles/dashboard.module.scss';
 
 interface DashboardProps {
-  user: User;
+  username: string | null;
   token: string;
 }
 
-interface Repository {
-  id: number;
-  name: string;
-}
+export default function Dashboard({ username, token }: DashboardProps) {
+  const [user, setUser] = useState<User | null>(null);
 
-export default function Dashboard({ user, token }: DashboardProps) {
-  const [repositories, setRepositories] = useState<Repository[]>(
-    [] as Repository[],
+  const { data: loggedUser, isLoading } = useQuery(
+    ['user'],
+    () => fetchLoggedUser(token),
+    { enabled: !username },
   );
 
-  async function loadRepositories() {
-    try {
-      const { data: repositoriesData } = await api.get(
-        `${user.repos_url}?page=1&per_page=5`,
-        {
-          headers: { Authorization: `token ${token}` },
-        },
-      );
-
-      setRepositories(repositoriesData);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const { data: userData } = useQuery(
+    ['user', username],
+    () => fetchUserByUsername(token, username as string),
+    { enabled: !!username },
+  );
 
   useEffect(() => {
-    loadRepositories();
-  }, [user]);
+    if (username) {
+      setUser(userData);
+      return;
+    }
+
+    setUser(loggedUser);
+  }, [loggedUser, username, userData]);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
-      <Head>
-        <title>Dashboard</title>
-      </Head>
+      <Head title="Dashboard | Github Profile" />
 
       <Header />
 
       <main className={styles.container}>
         <section className={styles.hero}>
-          <img src={user.avatar_url} alt={user.name} />
+          <img src={user?.avatar_url} alt={user?.name} />
 
           <div className={styles.userInfoGroup}>
-            <h1>{user.name}</h1>
-            <h3>{user.login}</h3>
-            <p>{user.bio}</p>
+            <h1>{user?.name}</h1>
+            <h3>{user?.login}</h3>
+            <p>{user?.bio}</p>
           </div>
 
           <div className={styles.followersGroup}>
             <span>
               <FiUsers />
-              <span>{user.followers}</span> seguidores
+              <span>{user?.followers}</span> seguidores
             </span>
             <span>
               <BsDot />
-              <span>{user.following}</span> seguindo
+              <span>{user?.following}</span> seguindo
             </span>
           </div>
 
           <div className={styles.socialGroup}>
-            {user.company && (
+            {user?.company && (
               <span>
                 <BiBuildings />
-                {user.company}
+                {user?.company}
               </span>
             )}
-            {user.location && (
+            {user?.location && (
               <span>
                 <FiMapPin />
-                {user.location}
+                {user?.location}
               </span>
             )}
-            {user.email && (
+            {user?.email && (
               <span>
                 <FiMail />
-                {user.email}
+                {user?.email}
               </span>
             )}
-            {user.blog && (
+            {user?.blog && (
               <span>
                 <FiLink />
-                {user.blog}
+                {user?.blog}
               </span>
             )}
-            {user.twitter_username && (
+            {user?.twitter_username && (
               <span>
                 <FaTwitter />
-                {user.twitter_username}
+                {user?.twitter_username}
               </span>
             )}
           </div>
         </section>
         <div className={styles.divider} />
         <section className={styles.content}>
-          <h2>Repos</h2>
-          <ul>
+          <h2>{username}</h2>
+          {/* <ul>
             {repositories.map((repository) => (
               <li key={repository.id}>{repository.name}</li>
             ))}
-          </ul>
+          </ul> */}
         </section>
       </main>
     </>
@@ -134,14 +132,7 @@ export async function getServerSideProps(ctx: any) {
     };
   }
 
-  const { data: user } = await api.get(
-    username ? `/users/${username}` : '/user',
-    {
-      headers: { Authorization: `token ${token}` },
-    },
-  );
-
   return {
-    props: { user, token },
+    props: { username: username || null, token },
   };
 }
