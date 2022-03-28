@@ -1,35 +1,38 @@
-import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { destroyCookie } from 'nookies';
 import { FaGithub } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 
 import styles from './styles.module.scss';
 
-interface HeaderProps {
-  user: {
-    name: string;
-    image: string;
-  };
-}
+export function Header() {
+  const routes = useRouter();
 
-export function Header({ user }: HeaderProps) {
+  function handleSignOut() {
+    destroyCookie(undefined, 'github-token');
+    routes.replace('/');
+  }
+
   return (
-    <header className={styles.headerContainer}>
-      <div className={styles.headerContent}>
-        <h1>
-          <FaGithub />
-          Github Profile
-        </h1>
-        <button
-          type="button"
-          className={styles.signOutButton}
-          onClick={() => signOut()}
-          title="Sair"
-        >
-          <img src={user.image} alt={user.name} />
-          <span>{user.name}</span>
-          <GoSignOut />
-        </button>
-      </div>
+    <header className={styles.header}>
+      <h1>
+        <FaGithub />
+        Github Profile
+      </h1>
+
+      <form>
+        <input type="text" placeholder="Buscar por username" name="username" />
+      </form>
+
+      <button
+        type="button"
+        className={styles.signOutButton}
+        onClick={handleSignOut}
+        title="Sair"
+      >
+        <span>Sair</span>
+        <GoSignOut />
+      </button>
     </header>
   );
 }

@@ -1,17 +1,13 @@
-.headerContainer {
+.header {
   height: 4rem;
   background: var(--gray-880);
   box-shadow: 0 0 8px var(--shadow-color);
-}
-
-.headerContent {
-  max-width: 1120px;
-  height: inherit;
   margin: 0 auto;
   padding: 0 2rem;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   h1 {
     font-size: 1.5rem;
@@ -22,6 +18,22 @@
       margin-right: 0.5rem;
     }
   }
+
+  form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+
+    input {
+      height: 2rem;
+      width: 100%;
+      border-radius: 2rem;
+      background: var(--gray-800);
+      color: var(--white);
+      border: 0;
+      padding: 1rem;
+    }
+  }
 }
 
 .signOutButton {
@@ -29,8 +41,7 @@
   border-radius: 2.2rem;
   background: var(--gray-800);
   border: 0;
-  padding-right: 1.5rem;
-  margin-left: auto;
+  padding: 0 1.5rem;
 
   display: flex;
   align-items: center;
@@ -44,6 +55,10 @@
     height: 2rem;
     border-radius: 2rem;
     margin-right: 0.5rem;
+  }
+
+  span {
+    line-height: 2.2rem;
   }
 
   svg {

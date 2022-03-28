@@ -1,8 +1,12 @@
 import Head from 'next/head';
-import { NextPageContext } from 'next';
+import { parseCookies } from 'nookies';
 import { FaGithub } from 'react-icons/fa';
 
 import styles from 'src/styles/login.module.scss';
+
+const CLIENT_ID = process.env.GITHUB_APP_CLIENT_ID;
+const SCOPE = 'read:user';
+const AUTH_URL = `https://github.com/login/oauth/authorize?scope=${SCOPE}&client_id=${CLIENT_ID}`;
 
 export default function Login() {
   return (
@@ -15,7 +19,7 @@ export default function Login() {
         <section className={styles.hero}>
           <h1>Github Profile</h1>
           <p>Faça login com seu github para acessar a plataforma.</p>
-          <a href="https://github.com/login/oauth/authorize?scope=read:user&client_id=70845afbae6b721138bd">
+          <a title="Entrar com Github" href={AUTH_URL}>
             <FaGithub />
             Entrar
           </a>
@@ -27,7 +31,18 @@ export default function Login() {
   );
 }
 
-export async function getServerSideProps(context: NextPageContext) {
+export async function getServerSideProps(ctx: any) {
+  const { 'github-token': token } = parseCookies(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {},
   };
