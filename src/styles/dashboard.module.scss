@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  padding: 2rem 4rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 18rem;
+
+  img {
+    width: 16rem;
+    height: 16rem;
+    border-radius: 16rem;
+  }
+
+  div {
+    margin-top: 1.25rem;
+  }
+
+  .userInfoGroup {
+    h3 {
+      margin-bottom: 1rem;
+      color: #8b949e;
+    }
+  
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .followersGroup {
+    display: flex;
+    align-items: center;
+  
+    span {
+      display: flex;
+      align-items: center;
+      color: #8b949e;
+  
+      span {
+        color: var(--white);
+        font-weight: 500;
+        margin: 0 0.25rem;
+      }
+    }
+  }
+  
+  .socialGroup {
+    display: flex;
+    flex-direction: column;
+  
+    span {
+      display: flex;
+      align-items: center;
+  
+      & + span {
+        margin-top: 0.25rem;
+      }
+  
+      svg {
+        margin-right: 0.25rem;
+        color: #8b949e;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  height: inherit;
+  margin: 0 4rem;
+  border-left: 1px solid #8b949e;
+}
