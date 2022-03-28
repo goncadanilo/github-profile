@@ -1,22 +1,14 @@
 import Head from 'next/head';
-import { Header } from 'src/components/Header';
-import { withSession } from 'src/helpers/withSession';
-import { UserSession } from 'src/types/userSession';
 
-interface DashboardProps {
-  session: UserSession;
-}
-
-export default function Dashboard({ session }: DashboardProps) {
+export default function Dashboard() {
   return (
     <>
       <Head>
         <title>Dashboard</title>
       </Head>
-
-      <Header user={session.user} />
+      <main>
+        <section>Dashboard</section>
+      </main>
     </>
   );
 }
-
-export const getServerSideProps = withSession;
