@@ -1,34 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  Github Profile
+</h1>
+<h3 align="center">
+  🚀 Desafio Front End | Compass.UOL
+</h3>
 
-## Getting Started
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
 
-First, run the development server:
+  <a href="https://app.rocketseat.com.br/me/goncadanilo">
+    <img src="https://img.shields.io/static/v1?label=author&message=Danilo%20Gon%C3%A7alves&color=8257E5&labelColor=000000" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-rodar">Como rodar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-licença">Licença</a>
+</p>
+
+<br>
+
+
+## 🚀 Tecnologias
+
+![Next.js](https://img.shields.io/badge/-Next.js-05122A?style=for-the-badge&logo=next.js)&nbsp;
+![React](https://img.shields.io/badge/-React-05122A?style=for-the-badge&logo=react)&nbsp;
+![React Query](https://img.shields.io/badge/-React--query-05122A?style=for-the-badge&logo=react-query)&nbsp;
+![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=for-the-badge&logo=typescript)&nbsp;
+![SASS](https://img.shields.io/badge/-SASS-05122A?style=for-the-badge&logo=SASS)&nbsp;
+![Github API](https://img.shields.io/badge/-Github--API-05122A?style=for-the-badge&logo=Github)&nbsp;
+
+
+## 💻 Projeto
+
+Esse projeto é uma plataforma para acesso aos dados de perfis de usuários do Github. O usuário pode fazer login com sua conta do Github. pesquisar por um usuário especifico, listar os seus repositórios e listar seus repositórios favoritos.
+
+Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
+
+### 🚀 Features
+
+- [x] Login com Github;
+- [x] Pesquisa por usuários;
+- [x] Listar repositórios de um usuário;
+- [x] Listar repositórios favoritos de um usuário;
+- [x] Cache de dados;
+- [ ] Adicionar estado de loading nos componentes (Skeleton);
+- [ ] Testes unitários;
+- [ ] Testes de integração;
+- [ ] Deploy;
+
+## 🔧 Como rodar
+
+É necessário ter instalado:
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
+
+### 🗂 Faça um clone do projeto
 
 ```bash
-npm run dev
-# or
+git clone https://github.com/goncadanilo/github-profile.git
+```
+
+### 📥 Instale as dependências
+```bash
+# Acesse o diretório do projeto
+cd github-profile
+
+# Instale as dependências
+yarn
+```
+
+### ⚡ Inicie a aplicação
+```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Licença
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feito com ♥ by [Danilo Gonçalves](https://github.com/goncadanilo). Me adicione no [LinkedIn](https://www.linkedin.com/in/goncadanilo/) :wave:
