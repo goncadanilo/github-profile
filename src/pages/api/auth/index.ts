@@ -17,10 +17,14 @@ export default async function handler(
   });
 
   const token = response.data.access_token;
-  setCookie({ res }, 'github-token', token, {
-    maxAge: 60 * 60 * 24, // 24 hours
-    path: '/',
-  });
 
-  return res.redirect('/dashboard');
+  if (token) {
+    setCookie({ res }, 'github-token', token, {
+      maxAge: 60 * 60 * 24, // 24 hours
+      path: '/',
+    });
+    return res.redirect('/dashboard');
+  }
+
+  return res.redirect('/');
 }
