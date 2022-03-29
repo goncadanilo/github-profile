@@ -55,9 +55,10 @@ Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
 - [x] Listar repositórios favoritos de um usuário;
 - [x] Cache de dados;
 - [x] Loading screen; 
-- [ ] Subistituir o loading por Skeleton para melhorar o UX;
 - [ ] Testes unitários;
 - [ ] Testes de integração;
+- [ ] Melhorar resposividade da Dashboard (Tablet e Mobile);
+- [ ] Subistituir o loading por Skeleton para melhorar o UX;
 - [x] Deploy;
 
 ## 🔧 Como rodar
