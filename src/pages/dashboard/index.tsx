@@ -23,7 +23,7 @@ export default function DashboardPage({ token }: DashboardPageProps) {
   }, [loggedUser]);
 
   return (
-    <DashboardTemplate title="Dashboard | Github Profile">
+    <DashboardTemplate title={user?.name || user?.login}>
       <UserDetails user={user} />
     </DashboardTemplate>
   );

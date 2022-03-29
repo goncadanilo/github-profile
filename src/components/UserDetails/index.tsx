@@ -14,7 +14,7 @@ interface UserDetailsProps {
 
 export function UserDetails({ user }: UserDetailsProps) {
   return (
-    <main className={styles.container}>
+    <>
       <section className={styles.hero}>
         <img src={user?.avatar_url} alt={user?.name} />
 
@@ -51,6 +51,6 @@ export function UserDetails({ user }: UserDetailsProps) {
           <Link href={`/dashboard/${user?.login}/stars`}>Stars</Link>
         </nav>
       </section>
-    </main>
+    </>
   );
 }

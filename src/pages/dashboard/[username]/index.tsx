@@ -30,7 +30,7 @@ export default function UserFoundPage({ token }: UserFoundPageProps) {
   }, [username, userData]);
 
   return (
-    <DashboardTemplate title={`${user?.name || user?.login} | Github Profile`}>
+    <DashboardTemplate title={user?.name || user?.login}>
       <UserDetails user={user} />
     </DashboardTemplate>
   );

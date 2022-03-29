@@ -1,0 +1,12 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  background: transparent;
+  border: 0;
+  margin-bottom: 2rem;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+}
