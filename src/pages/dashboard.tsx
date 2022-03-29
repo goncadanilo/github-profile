@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { parseCookies } from 'nookies';
-import { FaRegStar, FaTwitter } from 'react-icons/fa';
-import { HiCode } from 'react-icons/hi';
+import { FaTwitter } from 'react-icons/fa';
 import { FiUsers, FiLink, FiMapPin, FiMail } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
-import { BiBookBookmark, BiBuildings, BiGitRepoForked } from 'react-icons/bi';
+import { BiBuildings } from 'react-icons/bi';
 
 import { Head } from 'src/components/Head';
 import { Header } from 'src/components/Header';
@@ -17,6 +16,7 @@ import {
 import { Repository, User } from 'src/types/github';
 
 import styles from 'src/styles/dashboard.module.scss';
+import { RepositoryCard } from 'src/components/RepositoryCard';
 
 interface DashboardProps {
   username: string | null;
@@ -79,46 +79,46 @@ export default function Dashboard({ username, token }: DashboardProps) {
           </div>
 
           <div className={styles.followersGroup}>
-            <span>
+            <p>
               <FiUsers />
-              <span>{user?.followers}</span> seguidores
-            </span>
-            <span>
+              <p>{user?.followers}</p> seguidores
+            </p>
+            <p>
               <BsDot />
-              <span>{user?.following}</span> seguindo
-            </span>
+              <p>{user?.following}</p> seguindo
+            </p>
           </div>
 
           <div className={styles.socialGroup}>
             {user?.company && (
-              <span>
+              <p>
                 <BiBuildings />
                 {user?.company}
-              </span>
+              </p>
             )}
             {user?.location && (
-              <span>
+              <p>
                 <FiMapPin />
                 {user.location}
-              </span>
+              </p>
             )}
             {user?.email && (
-              <span>
+              <p>
                 <FiMail />
                 {user.email}
-              </span>
+              </p>
             )}
             {user?.blog && (
-              <span>
+              <p>
                 <FiLink />
                 {user.blog}
-              </span>
+              </p>
             )}
             {user?.twitter_username && (
-              <span>
+              <p>
                 <FaTwitter />
                 {user.twitter_username}
-              </span>
+              </p>
             )}
           </div>
         </section>
@@ -128,34 +128,7 @@ export default function Dashboard({ username, token }: DashboardProps) {
 
           <div className={styles.contentList}>
             {repositories?.map((repository) => (
-              <div className={styles.repositoryItem}>
-                <a href={repository.html_url}>
-                  <BiBookBookmark />
-                  {repository.name}
-                </a>
-
-                <p>{repository.description}</p>
-
-                <div className={styles.repositoryInfo}>
-                  <p>
-                    <FaRegStar />
-                    {repository.stargazers_count}
-                  </p>
-
-                  <p>
-                    <BiGitRepoForked />
-                    {repository.forks}
-                  </p>
-
-                  {repository.language && (
-                    <p>
-                      <HiCode />
-                      {}
-                      {repository.language}
-                    </p>
-                  )}
-                </div>
-              </div>
+              <RepositoryCard key={repository.id} repository={repository} />
             ))}
           </div>
         </section>
@@ -163,6 +136,7 @@ export default function Dashboard({ username, token }: DashboardProps) {
     </>
   );
 }
+
 export async function getServerSideProps(ctx: any) {
   const { 'github-token': token } = parseCookies(ctx);
   const { username } = ctx.query;

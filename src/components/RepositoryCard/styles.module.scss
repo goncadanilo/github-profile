@@ -1,0 +1,54 @@
+.repositoryCard {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--gray-700);
+  color: var(--gray-700);
+
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #fff;
+
+    transition: text-decoration 0.2s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    svg {
+      margin-right: 0.25rem;
+    }
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+}
+
+.repositoryInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--gray-700);
+
+  p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+
+    svg {
+      margin-right: 0.25rem;
+    }
+
+    & + p {
+      margin-left: 1rem;
+    }
+  }
+}
