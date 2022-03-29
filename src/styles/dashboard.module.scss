@@ -68,13 +68,73 @@
   }
 }
 
+.divider {
+  height: inherit;
+  margin: 0 4rem;
+  border-left: 1px solid #8b949e;
+}
+
 .content {
   display: flex;
   flex-direction: column;
 }
 
-.divider {
-  height: inherit;
-  margin: 0 4rem;
-  border-left: 1px solid #8b949e;
+.contentList {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 24px;
+}
+
+.repositoryItem {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #8b949e;
+
+  a {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #5c8af7;
+
+    svg {
+      color: var(--white);
+      margin-right: 4px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.repositoryInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+
+    :first-child {
+      margin-right: 4px;
+    }
+
+    & + p {
+      margin-left: 16px;
+    }
+  }
 }

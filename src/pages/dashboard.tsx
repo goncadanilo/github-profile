@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { parseCookies } from 'nookies';
-import { FaTwitter } from 'react-icons/fa';
+import { FaRegStar, FaTwitter } from 'react-icons/fa';
+import { HiCode } from 'react-icons/hi';
 import { FiUsers, FiLink, FiMapPin, FiMail } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
-import { BiBuildings } from 'react-icons/bi';
+import { BiBookBookmark, BiBuildings, BiGitRepoForked } from 'react-icons/bi';
 
 import { Head } from 'src/components/Head';
 import { Header } from 'src/components/Header';
-import { fetchLoggedUser, fetchUserByUsername } from 'src/service/github';
-import { User } from 'src/types/github';
+import {
+  getLoggedUser,
+  getUserByUsername,
+  getRepositoriesByUsername,
+} from 'src/service/github';
+import { Repository, User } from 'src/types/github';
 
 import styles from 'src/styles/dashboard.module.scss';
 
@@ -19,18 +24,25 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ username, token }: DashboardProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User>({} as User);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   const { data: loggedUser, isLoading } = useQuery(
     ['user'],
-    () => fetchLoggedUser(token),
+    () => getLoggedUser(token),
     { enabled: !username },
   );
 
   const { data: userData } = useQuery(
     ['user', username],
-    () => fetchUserByUsername(token, username as string),
+    () => getUserByUsername(token, username as string),
     { enabled: !!username },
+  );
+
+  const { data: repositoriesData } = useQuery(
+    ['repositories', username || user?.login],
+    () => getRepositoriesByUsername(token, username || user?.login),
+    { enabled: !!username || !!user?.login },
   );
 
   useEffect(() => {
@@ -41,6 +53,10 @@ export default function Dashboard({ username, token }: DashboardProps) {
 
     setUser(loggedUser);
   }, [loggedUser, username, userData]);
+
+  useEffect(() => {
+    setRepositories(repositoriesData);
+  }, [repositoriesData]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -83,37 +99,65 @@ export default function Dashboard({ username, token }: DashboardProps) {
             {user?.location && (
               <span>
                 <FiMapPin />
-                {user?.location}
+                {user.location}
               </span>
             )}
             {user?.email && (
               <span>
                 <FiMail />
-                {user?.email}
+                {user.email}
               </span>
             )}
             {user?.blog && (
               <span>
                 <FiLink />
-                {user?.blog}
+                {user.blog}
               </span>
             )}
             {user?.twitter_username && (
               <span>
                 <FaTwitter />
-                {user?.twitter_username}
+                {user.twitter_username}
               </span>
             )}
           </div>
         </section>
         <div className={styles.divider} />
         <section className={styles.content}>
-          <h2>{username}</h2>
-          {/* <ul>
-            {repositories.map((repository) => (
-              <li key={repository.id}>{repository.name}</li>
+          <h2>Repositórios</h2>
+
+          <div className={styles.contentList}>
+            {repositories?.map((repository) => (
+              <div className={styles.repositoryItem}>
+                <a href={repository.html_url}>
+                  <BiBookBookmark />
+                  {repository.name}
+                </a>
+
+                <p>{repository.description}</p>
+
+                <div className={styles.repositoryInfo}>
+                  <p>
+                    <FaRegStar />
+                    {repository.stargazers_count}
+                  </p>
+
+                  <p>
+                    <BiGitRepoForked />
+                    {repository.forks}
+                  </p>
+
+                  {repository.language && (
+                    <p>
+                      <HiCode />
+                      {}
+                      {repository.language}
+                    </p>
+                  )}
+                </div>
+              </div>
             ))}
-          </ul> */}
+          </div>
         </section>
       </main>
     </>
