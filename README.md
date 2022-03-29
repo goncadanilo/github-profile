@@ -23,6 +23,10 @@
 <br>
 
 
+https://user-images.githubusercontent.com/53796755/160658589-a9c529cd-f106-468b-a9dc-0b50a812f07e.mp4
+
+
+
 ## 🚀 Tecnologias
 
 ![Next.js](https://img.shields.io/badge/-Next.js-05122A?style=for-the-badge&logo=next.js)&nbsp;
@@ -84,7 +88,7 @@ Para saber como gerar essas variáveis de ambiente, acesse o link abaixo:
 
 https://docs.github.com/pt/developers/apps/building-oauth-apps
 
-> OBS: Quando for criar o OAuth App no github, defina o callback como: `http://localhost:3000/api/auth/` para executar o projeto em ambiente local.
+> 💡 OBS: Quando for criar o OAuth App no github, defina o callback como: `http://localhost:3000/api/auth/` para executar o projeto em ambiente local.
 
 ### ⚡ Inicie a aplicação
 ```bash
