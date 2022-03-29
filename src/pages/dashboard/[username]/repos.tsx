@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
-import { parseCookies } from 'nookies';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { RepositoryList } from 'src/components/RepositoryList';
+import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getRepositoriesByUsername } from 'src/service/github';
 import { Repository } from 'src/types/github';
 
@@ -41,19 +41,4 @@ export default function RepositoriesPage({ token }: RepositoriesPageProps) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
-  const { 'github-token': token } = parseCookies(ctx);
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { token },
-  };
-}
+export const getServerSideProps = authMiddleware;

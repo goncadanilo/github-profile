@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { parseCookies } from 'nookies';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { UserDetails } from 'src/components/UserDetails';
+import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getLoggedUser } from 'src/service/github';
 import { User } from 'src/types/github';
 
@@ -29,19 +29,4 @@ export default function DashboardPage({ token }: DashboardPageProps) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
-  const { 'github-token': token } = parseCookies(ctx);
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { token },
-  };
-}
+export const getServerSideProps = authMiddleware;

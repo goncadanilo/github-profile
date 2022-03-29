@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { parseCookies } from 'nookies';
+import { useRouter } from 'next/router';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { UserDetails } from 'src/components/UserDetails';
+import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getUserByUsername } from 'src/service/github';
 import { User } from 'src/types/github';
-
-import { useRouter } from 'next/router';
 
 interface UserFoundPageProps {
   token: string;
@@ -42,19 +41,4 @@ export default function UserFoundPage({ token }: UserFoundPageProps) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
-  const { 'github-token': token } = parseCookies(ctx);
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { token },
-  };
-}
+export const getServerSideProps = authMiddleware;
