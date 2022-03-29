@@ -44,6 +44,8 @@ Esse projeto é uma plataforma para acesso aos dados de perfis de usuários do G
 
 Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
 
+🔥 Demo: https://profile-git.herokuapp.com/
+
 ### 🚀 Features
 
 - [x] Login com Github;
@@ -55,7 +57,7 @@ Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
 - [ ] Subistituir o loading por Skeleton para melhorar o UX;
 - [ ] Testes unitários;
 - [ ] Testes de integração;
-- [ ] Deploy;
+- [x] Deploy;
 
 ## 🔧 Como rodar
 
