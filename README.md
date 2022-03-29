@@ -23,7 +23,8 @@
 <br>
 
 
-https://user-images.githubusercontent.com/53796755/160658589-a9c529cd-f106-468b-a9dc-0b50a812f07e.mp4
+
+https://user-images.githubusercontent.com/53796755/160672516-43ef2c76-8064-4d4f-8f27-7cb91c13ac0b.mp4
 
 
 
@@ -50,7 +51,8 @@ Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
 - [x] Listar repositórios de um usuário;
 - [x] Listar repositórios favoritos de um usuário;
 - [x] Cache de dados;
-- [ ] Adicionar estado de loading nos componentes (Skeleton);
+- [x] Loading screen; 
+- [ ] Subistituir o loading por Skeleton para melhorar o UX;
 - [ ] Testes unitários;
 - [ ] Testes de integração;
 - [ ] Deploy;
