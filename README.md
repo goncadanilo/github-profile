@@ -36,6 +36,7 @@ https://user-images.githubusercontent.com/53796755/160672516-43ef2c76-8064-4d4f-
 ![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=for-the-badge&logo=typescript)&nbsp;
 ![SASS](https://img.shields.io/badge/-SASS-05122A?style=for-the-badge&logo=SASS)&nbsp;
 ![Github API](https://img.shields.io/badge/-Github--API-05122A?style=for-the-badge&logo=Github)&nbsp;
+![Heroku](https://img.shields.io/badge/-Heroku-05122A?style=for-the-badge&logo=Heroku)&nbsp;
 
 
 ## 💻 Projeto
