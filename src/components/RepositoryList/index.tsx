@@ -7,20 +7,33 @@ import styles from './styles.module.scss';
 interface RepositoryListProps {
   repositories: Repository[];
   title: string;
+  displayOwner?: boolean;
 }
 
-export function RepositoryList({ repositories, title }: RepositoryListProps) {
+export function RepositoryList({
+  repositories,
+  title,
+  displayOwner = false,
+}: RepositoryListProps) {
   return (
     <div className={styles.container}>
       <BackButton />
 
       <h2>{title}</h2>
 
-      <div className={styles.list}>
-        {repositories?.map((repository) => (
-          <RepositoryCard key={repository.id} repository={repository} />
-        ))}
-      </div>
+      {repositories?.length > 0 ? (
+        <div className={styles.list}>
+          {repositories.map((repository) => (
+            <RepositoryCard
+              displayOwner={displayOwner}
+              key={repository.id}
+              repository={repository}
+            />
+          ))}
+        </div>
+      ) : (
+        <span>Nenhum repositório encontrado</span>
+      )}
     </div>
   );
 }

@@ -37,6 +37,7 @@
     "object-curly-newline": "off",
     "react/jsx-one-expression-per-line": "off",
     "arrow-body-style": "off",
+    "react/require-default-props": ["error", { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true }],
     "camelcase": [
       "error", { "properties": "always", "ignoreDestructuring": false }
     ]

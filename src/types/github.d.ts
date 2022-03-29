@@ -15,7 +15,9 @@ export interface User {
 export interface Repository {
   id: number;
   name: string;
-  full_name: string;
+  owner: {
+    login: string;
+  };
   description: string;
   language: string;
   stargazers_count: number;

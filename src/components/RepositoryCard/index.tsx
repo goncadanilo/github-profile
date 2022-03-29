@@ -7,15 +7,21 @@ import styles from './styles.module.scss';
 
 interface RepositoryCardProps {
   repository: Repository;
+  displayOwner: boolean;
 }
 
-export function RepositoryCard({ repository }: RepositoryCardProps) {
+export function RepositoryCard({
+  repository,
+  displayOwner,
+}: RepositoryCardProps) {
   return (
     <div className={styles.repositoryCard}>
       <a href={repository.html_url} target="_blank" rel="noreferrer">
         <BiBookBookmark />
         {repository.name}
       </a>
+
+      {displayOwner && <p>({repository.owner.login})</p>}
 
       <div className={styles.repositoryInfo}>
         <p>

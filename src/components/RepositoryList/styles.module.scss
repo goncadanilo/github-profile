@@ -3,7 +3,15 @@
   flex-direction: column;
 
   width: 100%;
-  max-width: 50rem;
+  max-width: 70vw;
+
+  span {
+    display: flex;
+    align-self: center;
+    margin-top: 5rem;
+    font-size: 2rem;
+    color: var(--gray-700);
+  }
 }
 
 .list {

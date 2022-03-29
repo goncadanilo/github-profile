@@ -19,19 +19,25 @@ export default function UserFoundPage({ token }: UserFoundPageProps) {
 
   const [user, setUser] = useState<User>({} as User);
 
-  const { data: userData } = useQuery(
-    ['user', username],
-    () => getUserByUsername(token, username as string),
-    { enabled: !!username },
-  );
+  const { data: userData, isLoading } = useQuery(['user', username], () => {
+    return getUserByUsername(token, username as string);
+  });
 
   useEffect(() => {
     setUser(userData);
   }, [username, userData]);
 
+  if (!userData && !isLoading) {
+    return (
+      <DashboardTemplate title="Not Found">
+        <h1>Not Found</h1>
+      </DashboardTemplate>
+    );
+  }
+
   return (
     <DashboardTemplate title={user?.name || user?.login}>
-      <UserDetails user={user} />
+      {isLoading ? <h1>Loading...</h1> : <UserDetails user={user} />}
     </DashboardTemplate>
   );
 }

@@ -34,3 +34,11 @@ export const getRepositoriesByUsername = async (
 
   return response.data;
 };
+
+export const getStarredByUsername = async (token: string, username: string) => {
+  const response = await api.get(`/users/${username}/starred`, {
+    headers: { Authorization: `token ${token}` },
+  });
+
+  return response.data;
+};

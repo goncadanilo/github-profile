@@ -4,7 +4,8 @@
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--gray-700);
 
-  max-width: 50rem;
+  width: 100%;
+  max-width: 70vw;
 
   img {
     width: 20rem;
@@ -51,17 +52,12 @@
   }
 }
 
-.divider {
-  height: inherit;
-  margin: 0 4rem;
-  border-left: 1px solid var(--gray-700);
-}
-
 .content {
   display: flex;
   flex-direction: column;
+  
   width: 100%;
-  max-width: 50rem;
+  max-width: 70vw;
 
   nav {
     display: flex;

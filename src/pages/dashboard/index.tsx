@@ -14,7 +14,7 @@ interface DashboardPageProps {
 export default function DashboardPage({ token }: DashboardPageProps) {
   const [user, setUser] = useState<User>({} as User);
 
-  const { data: loggedUser } = useQuery(['user'], () => {
+  const { data: loggedUser, isLoading } = useQuery(['user'], () => {
     return getLoggedUser(token);
   });
 
@@ -24,7 +24,7 @@ export default function DashboardPage({ token }: DashboardPageProps) {
 
   return (
     <DashboardTemplate title={user?.name || user?.login}>
-      <UserDetails user={user} />
+      {isLoading ? <h1>Loading...</h1> : <UserDetails user={user} />}
     </DashboardTemplate>
   );
 }
