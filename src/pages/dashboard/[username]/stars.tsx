@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { RepositoryList } from 'src/components/RepositoryList';
+import { LoadingScreen } from 'src/components/LoadingScreen';
 import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getStarredByUsername } from 'src/service/github';
 import { Repository } from 'src/types/github';
@@ -29,7 +30,7 @@ export default function StarsPage({ token }: StarsPageProps) {
   return (
     <DashboardTemplate title={`Stars | ${username}`}>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <LoadingScreen loading={isLoading} />
       ) : (
         <RepositoryList
           title={`Stars - ${username}`}

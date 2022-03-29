@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { UserDetails } from 'src/components/UserDetails';
+import { LoadingScreen } from 'src/components/LoadingScreen';
 import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getLoggedUser } from 'src/service/github';
 import { User } from 'src/types/github';
@@ -24,7 +25,11 @@ export default function DashboardPage({ token }: DashboardPageProps) {
 
   return (
     <DashboardTemplate title={user?.name || user?.login}>
-      {isLoading ? <h1>Loading...</h1> : <UserDetails user={user} />}
+      {isLoading ? (
+        <LoadingScreen loading={isLoading} />
+      ) : (
+        <UserDetails user={user} />
+      )}
     </DashboardTemplate>
   );
 }

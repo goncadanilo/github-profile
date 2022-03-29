@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
 import { RepositoryList } from 'src/components/RepositoryList';
+import { LoadingScreen } from 'src/components/LoadingScreen';
 import { authMiddleware } from 'src/middleware/auth-middleware';
 import { getRepositoriesByUsername } from 'src/service/github';
 import { Repository } from 'src/types/github';
@@ -30,7 +31,7 @@ export default function RepositoriesPage({ token }: RepositoriesPageProps) {
   return (
     <DashboardTemplate title={`Repos | ${username}`}>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <LoadingScreen loading={isLoading} />
       ) : (
         <RepositoryList
           title={`Repositórios - ${username}`}
