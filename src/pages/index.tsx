@@ -5,11 +5,11 @@ import { Head } from 'src/components/Head';
 
 import styles from 'src/styles/login.module.scss';
 
-interface LoginProps {
+interface LoginPageProps {
   clientId: string;
 }
 
-export default function Login({ clientId }: LoginProps) {
+export default function LoginPage({ clientId }: LoginPageProps) {
   return (
     <>
       <Head title="Login | Github Profile" />

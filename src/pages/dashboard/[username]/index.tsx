@@ -9,11 +9,11 @@ import { User } from 'src/types/github';
 
 import { useRouter } from 'next/router';
 
-interface DashboardProps {
+interface UserFoundPageProps {
   token: string;
 }
 
-export default function Dashboard({ token }: DashboardProps) {
+export default function UserFoundPage({ token }: UserFoundPageProps) {
   const routes = useRouter();
   const { username } = routes.query;
 

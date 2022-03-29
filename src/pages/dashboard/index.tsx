@@ -7,11 +7,11 @@ import { UserDetails } from 'src/components/UserDetails';
 import { getLoggedUser } from 'src/service/github';
 import { User } from 'src/types/github';
 
-interface DashboardProps {
+interface DashboardPageProps {
   token: string;
 }
 
-export default function Dashboard({ token }: DashboardProps) {
+export default function DashboardPage({ token }: DashboardPageProps) {
   const [user, setUser] = useState<User>({} as User);
 
   const { data: loggedUser } = useQuery(['user'], () => {
