@@ -1,0 +1,13 @@
+.text {
+  display: flex;
+  align-items: center;
+
+  & + .text {
+    margin-top: 0.25rem;
+  }
+
+  svg {
+    margin-right: 0.25rem;
+    color: var(--gray-700);
+  }
+}

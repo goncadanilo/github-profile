@@ -8,6 +8,8 @@ import { BiBuildings } from 'react-icons/bi';
 
 import { Head } from 'src/components/Head';
 import { Header } from 'src/components/Header';
+import { RepositoryCard } from 'src/components/RepositoryCard';
+import { SocialRow } from 'src/components/SocialRow';
 import {
   getLoggedUser,
   getUserByUsername,
@@ -16,7 +18,6 @@ import {
 import { Repository, User } from 'src/types/github';
 
 import styles from 'src/styles/dashboard.module.scss';
-import { RepositoryCard } from 'src/components/RepositoryCard';
 
 interface DashboardProps {
   username: string | null;
@@ -90,36 +91,11 @@ export default function Dashboard({ username, token }: DashboardProps) {
           </div>
 
           <div className={styles.socialGroup}>
-            {user?.company && (
-              <p>
-                <BiBuildings />
-                {user?.company}
-              </p>
-            )}
-            {user?.location && (
-              <p>
-                <FiMapPin />
-                {user.location}
-              </p>
-            )}
-            {user?.email && (
-              <p>
-                <FiMail />
-                {user.email}
-              </p>
-            )}
-            {user?.blog && (
-              <p>
-                <FiLink />
-                {user.blog}
-              </p>
-            )}
-            {user?.twitter_username && (
-              <p>
-                <FaTwitter />
-                {user.twitter_username}
-              </p>
-            )}
+            <SocialRow icon={<BiBuildings />}>{user?.company}</SocialRow>
+            <SocialRow icon={<FiMapPin />}>{user?.location}</SocialRow>
+            <SocialRow icon={<FiMail />}>{user?.email}</SocialRow>
+            <SocialRow icon={<FiLink />}>{user?.blog}</SocialRow>
+            <SocialRow icon={<FaTwitter />}>{user?.twitter_username}</SocialRow>
           </div>
         </section>
         <div className={styles.divider} />
