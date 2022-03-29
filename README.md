@@ -84,7 +84,7 @@ Para saber como gerar essas variáveis de ambiente, acesse o link abaixo:
 
 https://docs.github.com/pt/developers/apps/building-oauth-apps
 
-> OBS: Quando for criar o OAuth App no github, defina o callback como: `http://localhost:3000/api/auth/` para executar o projeto em ambiente local.
+> 💡 OBS: Quando for criar o OAuth App no github, defina o callback como: `http://localhost:3000/api/auth/` para executar o projeto em ambiente local.
 
 ### ⚡ Inicie a aplicação
 ```bash
