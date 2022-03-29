@@ -73,6 +73,19 @@ cd github-profile
 yarn
 ```
 
+### ⚙️ Defina as variáveis de ambiente
+Será necessário definir as seguintes variáveis de ambiente:
+```dotenv
+GITHUB_APP_CLIENT_ID=<github-client-id>
+GITHUB_APP_CLIENT_SECRET=<github-client-id>
+```
+
+Para saber como gerar essas variáveis de ambiente, acesse o link abaixo:
+
+https://docs.github.com/pt/developers/apps/building-oauth-apps
+
+> OBS: Quando for criar o OAuth App no github, defina o callback como: `http://localhost:3000/api/auth/` para executar o projeto em ambiente local.
+
 ### ⚡ Inicie a aplicação
 ```bash
 yarn dev
