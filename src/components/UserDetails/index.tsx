@@ -8,11 +8,11 @@ import { User } from 'src/types/github';
 
 import styles from './styles.module.scss';
 
-interface UserContainerProps {
+interface UserDetailsProps {
   user: User;
 }
 
-export function UserContainer({ user }: UserContainerProps) {
+export function UserDetails({ user }: UserDetailsProps) {
   return (
     <main className={styles.container}>
       <section className={styles.hero}>

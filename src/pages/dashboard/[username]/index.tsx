@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { parseCookies } from 'nookies';
 
 import { DashboardTemplate } from 'src/templates/DashboardTemplate';
-import { UserContainer } from 'src/components/User';
+import { UserDetails } from 'src/components/UserDetails';
 import { getUserByUsername } from 'src/service/github';
 import { User } from 'src/types/github';
 
@@ -31,7 +31,7 @@ export default function Dashboard({ token }: DashboardProps) {
 
   return (
     <DashboardTemplate title={`${user?.name || user?.login} | Github Profile`}>
-      <UserContainer user={user} />
+      <UserDetails user={user} />
     </DashboardTemplate>
   );
 }
