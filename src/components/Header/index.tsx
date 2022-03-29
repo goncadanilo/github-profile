@@ -21,7 +21,7 @@ export function Header() {
 
     if (username.trim()) {
       setUsername('');
-      routes.push(`?username=${username}`);
+      routes.replace(`/dashboard/${username.replace(' ', '')}`);
     }
   }
 
