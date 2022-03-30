@@ -43,7 +43,7 @@ https://user-images.githubusercontent.com/53796755/160672516-43ef2c76-8064-4d4f-
 
 Esse projeto é uma plataforma para acesso aos dados de perfis de usuários do Github. O usuário pode fazer login com sua conta do Github, pesquisar por um usuário especifico, listar os seus repositórios e listar seus repositórios favoritos.
 
-Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
+Esse é um desafio técnico para a vaga de Front End Developer na Compass UOL.
 
 🔥 Demo: https://profile-git.herokuapp.com/
 
