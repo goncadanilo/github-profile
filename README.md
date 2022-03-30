@@ -47,7 +47,7 @@ Esse é um desafio técnico para a vaga de Front end Developer na Compass UOL.
 
 🔥 Demo: https://profile-git.herokuapp.com/
 
-### 🚀 Features
+### 🚀 Checklist
 
 - [x] Login com Github;
 - [x] Pesquisa por usuários;
